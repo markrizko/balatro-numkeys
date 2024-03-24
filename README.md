@@ -11,7 +11,7 @@ Used Milck's QOL as a reference.
 | Operations | Functions |
 |----------|----------|
 |   Keys 1-0 and "-", "=" keys  |  Select first 12 cards in hand  |
-|   "\" key  |   Discard hand  |
+|   "\\" key  |   Discard hand  |
 |   Return (enter) key  |   Play hand  |
 
 ## Installation
