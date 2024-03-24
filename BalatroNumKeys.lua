@@ -25,11 +25,26 @@ function Controller.key_press_update(self, key, dt)
         ["0"] = 10,
         ["-"] = 11,
         ["="] = 12,
+        ["kp1"] = 1,
+        ["kp2"] = 2,
+        ["kp3"] = 3,
+        ["kp4"] = 4,
+        ["kp5"] = 5,
+        ["kp6"] = 6,
+        ["kp7"] = 7,
+        ["kp8"] = 8,
+        ["kp9"] = 9,
+        ["kp0"] = 10,
+        ["kp-"] = 11,
+        ["kp="] = 12,
     }
     keys_to_ui = {
-        ["`"] = "clear_hand",
+        ["`"] = "clear hand",
         ["\\"] = "discard hand",
         ["return"] = "play hand",
+        ["kp."] = "discard hand",
+        ["kp*"] = "clear hand",
+        ["kpenter"] = "play hand",
     }
 
     if G.STATE == G.STATES.SELECTING_HAND then
@@ -54,7 +69,7 @@ function Controller.key_press_update(self, key, dt)
         end
         if tableContains(keys_to_ui, key) then
             ui = keys_to_ui[key]
-            if ui == "clear_hand" then
+            if ui == "clear hand" then
                 queue_clear_key_pressed()
             elseif ui == "discard hand" then
                 local discard_button = G.buttons:get_UIE_by_ID('discard_button')
