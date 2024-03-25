@@ -45,6 +45,8 @@ function Controller.key_press_update(self, key, dt)
         ["kp."] = "discard hand",
         ["kp*"] = "clear hand",
         ["kpenter"] = "play hand",
+        ["q"] = "sort rank",
+        ["w"] = "sort suit",
     }
 
     if G.STATE == G.STATES.SELECTING_HAND then
@@ -81,6 +83,10 @@ function Controller.key_press_update(self, key, dt)
                 if play_button.config.button == 'play_cards_from_highlighted' then
                     G.FUNCS.play_cards_from_highlighted()
                 end
+            elseif ui == "sort rank" then
+                G.FUNCS.sort_hand_value()
+            elseif ui == "sort suit" then
+                G.FUNCS.sort_hand_suit()
             end
         end
     end
@@ -95,7 +101,7 @@ function tableContains(table, key)
     return false
 end
 
-function queue_clear_key_pressed(x, y)
+function queue_clear_key_pressed()
     if not G.SETTINGS.paused and G.hand and G.hand.highlighted[1] then 
         if (G.play and #G.play.cards > 0) or
         (G.GAME.STOP_USE and G.GAME.STOP_USE > 0) then return end
