@@ -4,7 +4,7 @@ Mod to add selecting cards with number keys in Balatro. Also adds hotkeys for pl
 Used Milck's QOL as a reference. 
 -->
 
-[Milck's QOL](https://github.com/Milck-QOL) and [Better-Mouse-And-Gamepad](https://github.com/Kooluve/Better-Mouse-And-Gamepad) helped inspire/reference for this code.
+[Milck's QOL](https://github.com/Milck-QOL) helped inspire/reference for this code.
 
 
 ## How to Use
