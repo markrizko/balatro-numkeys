@@ -38,7 +38,7 @@ function Controller.key_press_update(self, key, dt)
         ["kp-"] = 11,
         ["kp="] = 12,
     }
-    keys_to_ui = {
+    keys_to_ui_hand = {
         ["`"] = "clear hand",
         ["\\"] = "discard hand",
         ["return"] = "play hand",
@@ -47,6 +47,9 @@ function Controller.key_press_update(self, key, dt)
         ["kpenter"] = "play hand",
         ["q"] = "sort rank",
         ["w"] = "sort suit",
+    }
+    keys_to_ui_round_eval = {
+        ["return"] = "cash out",
     }
 
     if G.STATE == G.STATES.SELECTING_HAND then
@@ -69,8 +72,8 @@ function Controller.key_press_update(self, key, dt)
                 end
             end
         end
-        if tableContains(keys_to_ui, key) then
-            ui = keys_to_ui[key]
+        if tableContains(keys_to_ui_hand, key) then
+            ui = keys_to_ui_hand[key]
             if ui == "clear hand" then
                 queue_clear_key_pressed()
             elseif ui == "discard hand" then
@@ -87,6 +90,14 @@ function Controller.key_press_update(self, key, dt)
                 G.FUNCS.sort_hand_value()
             elseif ui == "sort suit" then
                 G.FUNCS.sort_hand_suit()
+            end
+        end
+    elseif G.STATE == G.STATES.ROUND_EVAL then
+        if tableContains(keys_to_ui_round_eval, key) then
+            ui = keys_to_ui_round_eval[key]
+            if ui == "cash out" then
+                e = {n=G.UIT.R, config={id = 'cash_out_button', align = "cm", padding = 0.1, minw = 7, r = 0.15, colour = G.C.ORANGE, shadow = true, hover = true, one_press = true, button = 'cash_out', focus_args = {snap_to = true}}}
+                G.FUNCS.cash_out(e)
             end
         end
     end
